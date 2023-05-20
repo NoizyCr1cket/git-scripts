@@ -1,2 +1,2 @@
 # git-scripts
-My Custom Git Scripts
+Add aliases to the scripts under `custom-commands` by listing them under your `[alias]` section of your `.gitconfig`.
