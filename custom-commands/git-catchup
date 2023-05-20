@@ -1,4 +1,4 @@
-#!/bin/sh -ex
+#!/bin/sh -e
 
 targetBranch=$1
 if [ "$targetBranch" = '' ]; then
@@ -7,7 +7,7 @@ if [ "$targetBranch" = '' ]; then
 fi
 
 selectMethod () {
-    read -p "Would you like to (m)erge or (r)ebase?" methodArg
+    read -p "Would you like to (m)erge or (r)ebase? " methodArg
     if [ "$methodArg" = "r" ]; then
         method=rebase
     elif [ "$methodArg" = "m" ]; then
