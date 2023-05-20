@@ -1,9 +1,8 @@
 @echo off
 
-:: Read params
 set targetBranch=%1
 if "%~1" == "" goto target-branch-required
-:: 2nd param expected to be -r, -m, or blank
+
 :select-method
 echo Would you like to (m)erge or (r)ebase?
 set /p methodArg=
