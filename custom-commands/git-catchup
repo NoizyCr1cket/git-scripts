@@ -1,0 +1,29 @@
+#!/bin/sh -ex
+
+targetBranch=$1
+if [ "$targetBranch" = '' ]; then
+    echo Target branch argument is required. Example: "git catchup develop"
+    exit 1
+fi
+
+selectMethod () {
+    read -p "Would you like to (m)erge or (r)ebase?" methodArg
+    if [ "$methodArg" = "r" ]; then
+        method=rebase
+    elif [ "$methodArg" = "m" ]; then
+        method=merge
+    else
+        selectMethod
+    fi
+}
+
+selectMethod
+
+# Checkout the target branch and catch it up with remote.
+git checkout $targetBranch
+git fetch
+git pull
+git checkout -
+git $method $targetBranch
+
+exit
